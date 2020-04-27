@@ -48,8 +48,8 @@ var tridata={
 var slinedata={
   strokesize:1,
   strokecolor:"white",
-  vmousex:0,
-  vmousey:0,
+  mousex:0,
+  mousey:0,
   startx:0,
   starty:0
 };
@@ -214,7 +214,7 @@ function drawshape(shape)
   {
     canvasgraph.strokeWeight(slinedata.strokesize);
     setup_strokecolor(slinedata.strokecolor);
-    canvasgraph.line(30,30,60,80);
+   // canvasgraph.line(slinedata.startx,slinedata.starty,slinedata.vmousex,slinedata.vmousey);
     
   }
   else{
@@ -300,7 +300,7 @@ function drawsline(data)
   
     canvasgraph.strokeWeight(data.strokesize);
     setup_strokecolor(data.strokecolor);
-    canvasgraph.line(slinedata.startx,slinedata.starty,slinedata.vmousex,slinedata.vmousey);
+    canvasgraph.line(data.startx,data.starty,data.mousex,data.mousey);
     
 }
 
@@ -315,6 +315,7 @@ function setup() {
 bag=loadImage('../media_store/onecampus_store/onecampus_icons/gridtrans3.png');
 canvas_setup();
 onecampus_server_2=io.connect('http://localhost:1000');
+
     
   }
   //update the shapes when the mouse is pressed
@@ -323,7 +324,22 @@ onecampus_server_2=io.connect('http://localhost:1000');
    update_shapedata(canvassetup.current_shape);
  
    onsendingshapes(canvassetup.current_shape);
+  
+ 
 
+ }
+ function mouseReleased()
+ {
+  slinedata.mousex=mouseX;
+  slinedata.mousey=mouseY;
+  canvasgraph.line(slinedata.startx,slinedata.starty,slinedata.mousex,slinedata.mousey);
+  onsendingshapes(canvassetup.current_shape);
+ 
+ }
+ function mouseMoved()
+ {
+  slinedata.startx=mouseX;
+  slinedata.starty=mouseY;
  }
  function mouseClicked()
  {
@@ -331,10 +347,8 @@ onecampus_server_2=io.connect('http://localhost:1000');
   rectdata.my=mouseY;
   tridata.startx=mouseX;
   tridata.starty=mouseY;
-  slinedata.startx=mouseX;
-  slinedata.starty=mouseY;
-  slinedata.vmousex=movedX;
-  slinedata.vmousey=movedY;
+
+ 
  }
  //tansfering and drawing the shapes when the mouse is dragged
   function mouseDragged()
@@ -343,8 +357,8 @@ onecampus_server_2=io.connect('http://localhost:1000');
     update_shapedata(canvassetup.current_shape);
     drawshape(canvassetup.current_shape);
     onsendingshapes(canvassetup.current_shape);
-    slinedata.vmousex=movedX;
-    slinedata.vmousey=movedY;
+ 
+    console.log(slinedata.vmousex);
     
   }
 
@@ -354,6 +368,8 @@ onecampus_server_2=io.connect('http://localhost:1000');
     if(canvassetup.background=="grid"){
     canvasgraph.background(bag);
     }
+
     onreceivingshapes();
+    
    
   }

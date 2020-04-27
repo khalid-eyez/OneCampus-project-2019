@@ -1,0 +1,160 @@
+
+#bluearea
+{
+    background-color:rgba(0,0,255, .6);
+    height:76%;
+    width:100%;
+    padding-top: 1%;
+}
+#logo
+{
+    height:18%;
+    width:100%;
+    background-color:rgba(255,255,255);
+   
+}
+#footer
+{
+    height:4%;
+    width:100%;
+    background-color:rgba(0,0,255, .6);
+    color:#aaffff;
+   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#footer img
+{
+    height:55%;
+}
+#logo img{
+margin-top: 3%;
+height:50%;
+width:8%;
+}
+body{
+    margin:0px;
+    padding:0px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../../media_store/onecampus_store/onecampus_icons/tenor1.gif');
+
+}
+
+#studentbio
+{
+    width:50%;
+    height:80%;
+    background-color:rgba(255,255,255,.9);
+    margin-left: 25%;
+    border-radius: 8px;
+    float:left;
+    
+}
+#studentschool
+{
+   display:none;
+    width:50%;
+    height:80%;
+    background-color:rgba(255,255,255,.9);
+    border-radius: 8px;
+    float:left;
+    
+}
+#studentaccount
+{
+    display:none;
+    width:50%;
+    height:80%;
+    background-color:rgba(255,255,255,.9);
+    border-radius: 8px;
+    float:left;
+    
+}
+#fname
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+#lastname
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+#gender
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+    
+}
+#dob
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+#country
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+#region
+{
+    width:55%;
+    height:7%;
+    border:solid 1px  blue;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+#bioheader
+{
+    width:100%;
+    height:10%;
+    color:#0000aa;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: small;
+    padding-top: 2%;
+}
+#bluearea input
+{
+    width:91%;
+    height:100%;
+    border:none;
+    border-radius: 0px 6px 6px 0px;
+    float:left;
+    background:none;
+    font-size:17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    opacity:.3;
+
+}
+#bluearea img
+{
+ width:8%;
+ height:80%;
+ float:left;
+ border:none;
+ margin-top: .9%;
+ margin-left: .9%;
+}
+#gender input{
+    width:4%;
+    height:4%;
+}
+

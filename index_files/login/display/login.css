@@ -1,0 +1,176 @@
+input{
+    width:90%;
+    height:100%;
+    border-radius:8px ;
+    border-color: white;
+    border-style: solid;
+    float: left;
+    color:#0000ff;
+
+}
+#usernameinput
+{
+    width:30%;
+    height:30px;
+    margin-bottom:20px; 
+}
+#passinput img
+{
+    width:10%;
+    float: left;
+}
+#passinput
+{
+    width:25%;
+    height:30px;
+    margin-bottom:20px;
+    background-color: white;
+    border-radius: 8px;
+}
+#usernameinput img
+{
+    width:10%;
+    height: 85%;
+    float: left;
+}
+#usernameinput
+{
+    width:25%;
+    height:30px;
+    margin-bottom:20px;
+    background-color: white;
+    border-radius: 8px;
+}
+#loginbutton
+{
+    width:25%;
+    height:35px;
+    background-color:white;
+    border-radius: 8px;
+}
+#loginbutton img{
+
+    width:9%;
+    height:90%;
+    float: left;
+    margin-top: .8%;
+}
+
+#loginarea
+{
+    background-color:rgba(0,0,255, .6);
+    height:68%;
+    width:100%;
+}
+#logo
+{
+    height:28%;
+    width:100%;
+    background-color: white;
+}
+#footer
+{
+    height:4%;
+    width:100%;
+    background-color:rgba(0,0,255, .6);
+    color:#aaff00;
+}
+#footer img
+{
+    height:55%;
+}
+#logo img{
+margin-top: 3%;
+height:50%;
+width:12%;
+}
+body{
+    margin:0px;
+    padding:0px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../../media_store/onecampus_store/onecampus_icons/tenor1.gif');
+
+}
+#loginheader img{
+
+    position: relative;
+    width: 13%;
+    height:20%;
+}
+#loginheader
+{
+    background-color: white;
+    width:50%;
+    margin-bottom: 10px;
+    border:solid white;
+    border-radius: 0px 0px 8px 8px;
+}
+#forgotpassword
+{
+ float: left;
+ margin-right: 20%;
+ color: white;
+}
+#register
+{
+    float: left; 
+    color: white; 
+}
+#otheroptions
+{
+    width:30%;
+    margin-top: 2%;
+    padding-left: 3%;
+}
+#otheroptions a
+{
+    color: white;
+}
+#register img
+{
+    width: 34%;
+    height:6%;
+}
+#forgotpassword img
+{
+    width: 16%;
+    height:5%;
+   
+}
+#response
+{
+    border:solid 1px blue;
+    width:60%;
+    height:15%;
+    text-align: center;
+    color:red;
+    margin-left: 20%;
+    margin-top:20%;
+    position: absolute;
+    background-color: white;
+    border-radius:7px;
+    box-shadow: 2px 2px 2px 2px #aaaadd;
+    display: none;
+    padding-top: 3%;
+}
+#tryagain
+{
+    border:solid 1px white;
+    border-radius: 6px;
+    margin-left: 85%;
+    margin-top: 5%;
+    width:13%;
+    height:25%;
+    background-color: #8b8be9;
+    color:white;
+    font-weight: bold;
+    cursor: default;
+
+}
+#tryagain:hover{
+    background-color:#0000aa;
+    border-color: blue;
+}
