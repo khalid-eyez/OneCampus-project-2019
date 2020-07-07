@@ -1,7 +1,7 @@
 var express=require('express');
 var onecampus_server2=express();
-var servernetwork=onecampus_server2.listen(1000);
-console.log("onecampus server 2 is running at port 1000");
+var servernetwork=onecampus_server2.listen(1200);
+console.log("onecampus server 1 is running at port 1200");
 
 var socket=require('socket.io');
 var clientnode=socket(servernetwork);

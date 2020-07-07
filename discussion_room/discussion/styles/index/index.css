@@ -1,0 +1,108 @@
+body
+{
+    padding:0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+}
+#topbarx
+{
+    width:99.9%;
+    border: solid 1px #ccc;
+    height:7%;
+    margin:0px 0px 0px 0px; 
+    color:blue; 
+    
+}
+#topbarx div
+{
+    padding-right:.5%;
+}
+#top_imagesx
+{
+    width:25%;
+    height:90%;
+    float:left;
+}
+#topbarx img
+{
+width:23%;
+height:95%;
+color:blue;
+float:left;
+}
+
+ #disc_infox
+{
+float:left;
+height:99%;
+width:50%;
+}
+
+#disc_infox span
+{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#timingx
+{
+float:left;
+background-color: #0000ff;
+height:99%;
+width:23%;
+color:white;
+}
+
+
+#optionsx
+{
+    width:8%;
+    height:99.6%;
+    border:solid 1px #ccc;
+    color:blue;
+    background-color:#fff;
+    float:left;
+
+}
+
+#optionsx img
+{
+  width:30px;
+  height:30px;
+  padding-top:20px;
+  padding-left:20px;
+  padding-right:15px;
+  float: none;
+}
+#mid_areax
+{
+    width:100%;
+    height:90%;
+   
+}
+#disc_areax
+{
+    width:91.5%;
+    height:100%;
+    float:left;
+    background-color: cornflowerblue;
+}
+
+#onefooterx
+{
+    height:2.8%;
+    width:100%;
+    color:white;
+    background-color: blue;
+}
+#setoptionsx
+{
+    background-color: rgba(255,255,255,.6);
+    border:solid 1px #fff;
+    margin-left:0px;
+    margin-bottom:50px;
+    cursor: pointer;
+    display:none;
+}
+#homex
+{
+    width:5%;
+}
+

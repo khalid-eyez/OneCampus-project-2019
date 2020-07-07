@@ -1,9 +1,9 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Registration</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
 <link rel="stylesheet" type="text/css" href="index_files/login/display/signup.css"/>
 <script src="ressources/jquery/jquery.js"></script>
 <script src="index_files/login/display/signup.js"></script>
@@ -11,105 +11,50 @@
 <body>
 <center>
 <div id="logo">
-<img src="media_store/onecampus_store/onecampus_logo/onecampuslogo.png"></img>
+<img src="media_store/onecampus_store/onecampus_logo/onecampuslogo.png" />
 </div>
 </center>
 <div id="bluearea">
-
-
-<div id="studentbio">
+<div id="registration">
 <center>
-<div id="bioheader">Student personal information</div>
-<div id="fname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="fname" name="fname" placeholder="First name"></input>
-</div>
-<div id="lastname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="lname" name="lname" placeholder="Last name"></input>   
-</div>
-<div id="gender">
-<input type="radio" name="gender" id="sex">female</input>
-male<input type="radio" name="gender" id="sex"></input>
-</div>
-<div id="dob">
-<input type="date"></input>
-</div>
-<div id="country">
-<img src="media_store/onecampus_store/onecampus_icons/country2.png"></img>
-<input type="text" id="country" name="country" placeholder=" your country of residence"></input>
-</div>
-<div id="region">
-<img src="media_store/onecampus_store/onecampus_icons/region1.png"></img>
-<input type="text" id="region" name="region" placeholder="the region of residence"></input>
-</div>
+<div id="infologo"><img src="media_store/onecampus_store/onecampus_icons/user2.png" /></div>
+<div id="heading">Student registration</div>
 </center>
-<div id="bionext">next</div>
+
+<fieldset><legend>personal information</legend>
+<form id="regform" action="registration.php" method="POST">
+<input type="text" id="fname" name="fname" placeholder="First name"></input>
+<input type="text" id="lname" name="lname" placeholder="Last name"></input>   
+<input type="text" id="countrys" name="country" placeholder="country of residence"></input>
+<input type="text" id="regions" name="region" placeholder="region of residence"></input>
+female<input type="radio" name="gender" id="female" value="female" checked="checked"/>
+Male<input type="radio" name="gender" id="male" value="male"/>
+<label for="age">birth date</lable><input type="date" id="date" name="date" placeholder="date of birth"></input>
+</fieldset>
+<fieldset><legend>Account information</legend>
+<input type="text" id="username" name="username" placeholder="username"></input>
+<input type="text" id="email" name="email" placeholder="email"></input>   
+<input type="text" id="password" name="password" placeholder="password"></input>
+<input type="text" id="confirm_pass" name="confirm_pass" placeholder="confirm password"></input></fieldset>
+
+<fieldset><legend>Academic information</legend>
+<input type="text" id="univ" name="univ" placeholder="univerdity"></input>
+<input type="text" id="college" name="college" placeholder="college"></input>   
+<input type="text" id="degree" name="degree" placeholder="degree program"></input>
+<input type="text" id="yos" name="yos" placeholder="year of study"></input></fieldset>
+<input type="submit"  name="submit" value="Send details" id="submit"></input>
+</form>
 </div>
-
-
-<div id="studentschool">
+<div id="response">
+<div id="text"></div>
+<a href="index.php"><div id="login">Login</div></a>
+</div>
+</div>
 <center>
-<div id="bioheader">Student university information</div>
-<div id="fname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="fname" name="fname" placeholder="First name"></input>
-</div>
-<div id="lastname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="lname" name="lname" placeholder="Last name"></input>   
-</div>
-<div id="gender">
-<input type="radio" name="gender" id="sex">female</input>
-male<input type="radio" name="gender" id="sex"></input>
-</div>
-<div id="dob">
-<input type="date"></input>
-</div>
-<div id="country">
-<img src="media_store/onecampus_store/onecampus_icons/country2.png"></img>
-<input type="text" id="country" name="country" placeholder=" your country of residence"></input>
-</div>
-<div id="region">
-<img src="media_store/onecampus_store/onecampus_icons/region1.png"></img>
-<input type="text" id="region" name="region" placeholder="the region of residence"></input>
-</center>
-<div id="schoolnext">next</div>
-</div>
-<div id="studentaccount">
-    <center>
-<div id="bioheader">Student account information</div>
-<div id="fname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="fname" name="fname" placeholder="First name"></input>
-</div>
-<div id="lastname">
-<img src="media_store/onecampus_store/onecampus_icons/name3.png"></img>
-<input type="text" id="lname" name="lname" placeholder="Last name"></input>   
-</div>
-<div id="gender">
-<input type="radio" name="gender" id="sex">female</input>
-male<input type="radio" name="gender" id="sex"></input>
-</div>
-<div id="dob">
-<input type="date"></input>
-</div>
-<div id="country">
-<img src="media_store/onecampus_store/onecampus_icons/country2.png"></img>
-<input type="text" id="country" name="country" placeholder=" your country of residence"></input>
-</div>
-<div id="region">
-<img src="media_store/onecampus_store/onecampus_icons/region1.png"></img>
-<input type="text" id="region" name="region" placeholder="the region of residence"></input>
-</div>
-</center>
-<div id="accountnext">next</div>
-</div>  
-</div>
 <div id="footer">
 <img src="media_store/onecampus_store/onecampus_icons/copyright.png"/>
 OneCampus team 2020. All rights reserved.
 </div>
-
+</center>
 </body>
 </html>

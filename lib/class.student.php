@@ -62,6 +62,12 @@ public function login()
      //setting up the user session
      $_SESSION['userid']=$acc->getUserid();
      $_SESSION['username']=$acc->getUsername();//the future requires setting the real name as well,after having implemnted the bio
+     $conn=dbconnect();
+     $sql="update student_account set acc_status='active' where student_id=".$acc->getUserid().";";
+     mysqli_query($conn,$sql) or die(mysqli_error());
+     //we set this account active in the database
+
+
      
      //header("location:../../../student_home");
 

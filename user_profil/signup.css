@@ -1,0 +1,133 @@
+
+#bluearea
+{
+    background-color:rgba(255,255,255,);
+    height:-moz-fit-content;
+    height:-webkit-fit-content;
+    display:flex;
+    width:100%;
+    border-radius: 10px 10px 10px 10px;
+    border-color: white;
+}
+
+body{
+    margin:0px;
+    padding:0px;
+    background-color:rgba(255,255,255); 
+
+}
+
+#registration
+{
+    width:100%;
+    height:500px;
+    background-color:rgb(255,255,255);
+    border-radius: 8px 8px 8px 8px;
+    border:solid 1px #ccc;
+    padding-top:1%;
+
+   
+    
+}
+#registration input[type="text"]
+{
+    height:25px;
+    width:170px;
+    border-radius: 8px 8px 8px 8px;
+    margin-bottom: 2%;
+}
+fieldset
+{
+    border-radius: 10px 10px 10px 10px;
+    height: 15%;
+    width:90%;
+    margin-bottom: 1%;
+    border:none;
+}
+fieldset legend{
+
+    color:#faf4f7;
+}
+#registration input[type="date"]
+{
+    border:solid .5px #ffffff;
+    border-radius: 8px 8px 8px 8px;
+}
+#heading
+{
+    color: rgba(255,255,255,.8);
+    font-weight: bolder;
+    margin-bottom: 1%;
+}
+
+#submit
+{
+    width:55%;
+    height:10%;
+    border: solid 1px white;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0px 0px 2px 2px azure;
+    margin-left: 20%;
+    margin-top: 1%;
+    color: blue;
+    font-weight: bolder;
+    cursor: pointer;
+
+}
+#submit:hover{
+border: solid 1px rgb(150, 187, 241);
+box-shadow: 0px 0px 3px 3px cornflowerblue;
+
+}
+#images
+{
+    width:20%;
+    height:20%;
+    border-radius: 8px 8px 8px 8px;
+    margin-left: 2%;
+    float:left;
+}
+#images img
+{
+    width:100%;
+    height: 100%;
+    border-radius: 50% 50%;
+    float: left;
+}
+#edit
+{
+    width:250px;
+    height:40px;
+    border: solid 1px white;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0px 0px 2px 2px azure;
+    margin-left: 20%;
+    margin-top: 1%;
+    color: blue;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: blue;
+    color:white;
+    text-align:center;
+    padding-top:1%;
+}
+#edit:hover
+{
+   background-color: lightblue; 
+   color:blue;
+}
+#go
+{
+    float: left;
+    border:solid 1px #cc
+}
+#info
+{
+    float: left;
+    width:78%;
+    height:100%;
+}
+#controls
+{
+
+}

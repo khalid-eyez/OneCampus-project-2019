@@ -1,0 +1,80 @@
+#chatbox
+{
+    width:100%;
+    height:100%;
+}
+
+#messagedisplay
+{
+    width:100%;
+    height:90%;
+    background-image: url(../../../../media_store/onecampus_store/onecampus_icons/chatback.png);
+}
+#typing
+{
+ width:100%;
+ height:10%;
+}
+#typing input
+{
+    height:65%;
+    width:60%;
+    border:none;
+    margin-top:6px;
+    border-radius: 12px 12px 12px 12px;
+    float: left;
+}
+#typing img
+{
+    width:4%;
+    height:65%;
+    margin-top:.5%;
+    float:left;
+    border:solid 1px white;
+    border-radius: 4px 4px 4px 4px;
+
+}
+#typearea
+{
+    margin-left: 20%;
+}
+#messagesect div
+{
+    width:-moz-fit-content;
+    height:-moz-fit-content;
+    width:-webkit-fit-content;
+    height:-webkit-fit-content;
+    max-width: 30%;
+    word-wrap: break-word;
+    background-color: rgba(255,255,255,.6);
+    border:solid 1px #fff;
+    padding:2%;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom:2%;
+    margin-left: 6%;
+    margin-top: 1%;
+    
+}
+#messages
+{
+    width:100%;
+    height:96%;
+    overflow-y: auto;   
+}
+#typo
+{
+    width:100%;
+    height:4%;
+   
+    
+}
+#messagesect
+{
+    width: 90%;
+    height:-webkit-fit-content;
+    height:-moz-fit-content;
+    margin-left: 5%;
+
+
+}
+

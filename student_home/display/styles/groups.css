@@ -1,0 +1,25 @@
+#groups
+{
+    width:100%;
+    height:100%;
+    display:inline-block;
+}
+#newgroup
+{
+    width:100%;
+    height:20%;
+    border:solid 1px red;
+}
+#allgroups
+{
+    width:100%;
+    height:30%;
+    border:solid 1px blue;
+
+}
+#groupview
+{
+    width:100%;
+    height:50%;
+    border:solid 1px blue;
+}

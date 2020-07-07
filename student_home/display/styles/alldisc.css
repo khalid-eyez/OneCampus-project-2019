@@ -1,0 +1,67 @@
+#discussionlist
+{
+    width:100%;
+    height:100%;
+    overflow: auto;
+
+}
+#discplay
+{
+   width:80%;
+   height:8%;
+   background-color: white;
+   border-radius: 10px 10px 10px 10px;
+   float: left;
+   margin-top: .2%;
+   margin-left: 10%;
+
+}
+#apartner div{
+    margin-right: .5%;
+}
+#theimage
+{
+   width:20%;
+   height:50%;
+   float: left;
+}
+#theimage img
+{
+    width:35px;
+    height:35px;
+    float: left;
+    border-radius:50%!important;
+    
+}
+#discpart
+{
+    float:left;
+    width:50%;
+    height:70%;
+    margin-top: 1%; 
+    font-size: 13px;
+}
+#deci
+{
+    width:15%;
+    float:left;
+    height:50%;
+    margin-top: 1%;
+    font-size: 13px;
+}
+#acc_deci
+{
+    width:15%;
+    float:left;
+    height:50%;
+    margin-top: 1%;
+    font-size: 13px;
+}
+#join_deci
+{
+    width:15%;
+    float:left;
+    height:50%;
+    margin-top: 1%;
+    font-size: 13px;
+}
