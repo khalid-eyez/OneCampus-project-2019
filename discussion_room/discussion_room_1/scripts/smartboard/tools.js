@@ -314,7 +314,7 @@ function setup() {
     // put setup code here
 bag=loadImage('../media_store/onecampus_store/onecampus_icons/gridtrans3.png');
 canvas_setup();
-onecampus_server_2=io.connect('http://localhost:1200');
+onecampus_server_2=io.connect('http://172.16.52.47:1200');
 
     
   }

@@ -207,7 +207,7 @@ $('#regform').on('submit',function(f)
 if(send==true){
 //now sending the data to the server
 var data=$('#regform').serializeArray();
-console.log(data);
+//console.log(data);
 //var submit=JSON.stringify(data);
 //console.log(JSON.parse(submit));
 $.post("registration.php",{submit:data})

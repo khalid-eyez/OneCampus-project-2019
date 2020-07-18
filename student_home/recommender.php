@@ -52,7 +52,7 @@ $pids=$mypartners['student_id'];
 } //my partners ids
 //print_r($pids);
 //my academic details
-$myacademic_details=[];
+//$myacademic_details=[];
 $my_recommended=[]; //recommended ids partners
 $my_recommended_firstnames=[];//first names for recommended partners
 $my_recommended_lastnames=[];//last names for recommended partners
@@ -109,13 +109,12 @@ if(count($common_partners)>0)
 
 //comparing my elements with the other users
 //print_r($user_details);
+//print_r($myacademic_details);
 $common_partners_num=array_intersect($user_details,$myacademic_details);
-
-
 //$common_partners_d=array_intersect($user_ids,$myacademic_details);
-
+//print($user_ids['student_id']);
 //print(empty($common_partners_num));
-if(count($common_partners_num)>0)
+if(count($common_partners_num)>1)
 {
     //must not be me
     //is he already a partner?
@@ -124,7 +123,7 @@ if(count($common_partners_num)>0)
     {
         //is he already in the recommendation list?
         if(!in_array($user_ids['student_id'],$my_recommended)){
-
+         
             array_push($my_recommended,$user_ids['student_id']);
             array_push($my_recommended_firstnames,$user_ids['firstname']);
             array_push($my_recommended_lastnames,$user_ids['lastname']);

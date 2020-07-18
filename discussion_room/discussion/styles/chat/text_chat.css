@@ -14,6 +14,7 @@
 {
  width:100%;
  height:10%;
+ background-image: url(../../../../media_store/onecampus_store/onecampus_icons/chatback.png);
 }
 #typing input
 {
@@ -23,6 +24,7 @@
     margin-top:6px;
     border-radius: 12px 12px 12px 12px;
     float: left;
+
 }
 #typing img
 {
@@ -37,23 +39,72 @@
 #typearea
 {
     margin-left: 20%;
+    
 }
-#messagesect div
+.new
 {
     width:-moz-fit-content;
     height:-moz-fit-content;
     width:-webkit-fit-content;
     height:-webkit-fit-content;
-    max-width: 30%;
+    min-width: 25%;
+    max-width: 45%;
     word-wrap: break-word;
     background-color: rgba(255,255,255,.6);
     border:solid 1px #fff;
-    padding:2%;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 12px 12px 12px 12px;
+    padding-top: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
     margin-bottom:2%;
     margin-left: 6%;
     margin-top: 1%;
     
+}
+#senderr
+{
+    font-size: 70%;
+    width:50%;
+    height:-webkit-fit-content;
+    height:-moz-fit-content;
+    text-align: right;
+    float: left;
+    color:blue;
+   
+
+}
+#userimg
+{
+    
+    width:40%;
+    height:-webkit-fit-content;
+    height:-moz-fit-content;
+    height:fit-content;
+    float: left;
+}
+#userimg img{
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    display: inline-block;
+}
+#headbar
+{
+    width:100%;
+    height:10%;
+    display: inline-block;
+}
+
+#textm
+{
+    height:-moz-fit-content;
+    height:-webkit-fit-content;
+    height: fit-content;
+    max-width: 90%;
+    overflow-wrap:anywhere;
+    margin-top: 1%;
+    margin-left: 8%;
 }
 #messages
 {

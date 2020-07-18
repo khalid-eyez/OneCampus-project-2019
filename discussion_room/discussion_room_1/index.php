@@ -7,7 +7,7 @@
 <script  src="lib/p5/addons/p5.sound.min.js"></script>
 <script  src="scripts/smartboard/tools.js"></script>
 
-<script type="text/javascript" src="../ressources/jquery/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/socketio/socket.io.js"></script>
 </head>
 <body>

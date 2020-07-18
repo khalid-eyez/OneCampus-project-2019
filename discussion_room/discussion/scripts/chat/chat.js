@@ -1,5 +1,5 @@
 $('document').ready(function(){
-var serverchannel=io.connect('http://localhost:1000');
+var serverchannel=io.connect('http://172.16.52.47:1000');
 var params = new window.URLSearchParams(window.location.search);
 var room=params.get('disc');
 var username=params.get('username');
@@ -15,21 +15,18 @@ username:"",
 message:""
 }
 data.room=room;
-var messagearea=$('#usermessage');
-console.log( messagearea.val());
 
     serverchannel.emit('roomcreation',data);
-   
     var myid; 
     $.get('getmyid.php',function(data){
 
         myid=data;
         //console.log(data);
     });
-   
+var messagearea=$('#usermessage');
 $('#send').click(function(){
 
-   
+console.log('clicked');
 
 if(messagearea!="")
 {
@@ -52,10 +49,10 @@ function getnewmessage(dataz)
     $('#messages').append('<div id="messagesect"><div id="newmessage'+count+'">'+dataz.message+' '+dataz.sendername+'</div></div>');
     console.log(dataz.message);
     
-    console.log("sender"+dataz.senderid+"receiver"+myid);
+    console.log("sender"+dataz.senderid+"receiver"+userid);
    
     
-    if(dataz.senderid==myid)
+    if(dataz.senderid==userid)
     {
         $('#newmessage'+count).css({
             marginLeft:'60%',

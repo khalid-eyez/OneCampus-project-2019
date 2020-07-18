@@ -53,8 +53,8 @@ color:white;
 
 #optionsx
 {
-    width:8%;
-    height:99.6%;
+    width:100%;
+    height:19%;
     border:solid 1px #ccc;
     color:blue;
     background-color:#fff;
@@ -64,25 +64,53 @@ color:white;
 
 #optionsx img
 {
-  width:30px;
-  height:30px;
-  padding-top:20px;
-  padding-left:20px;
-  padding-right:15px;
+  width:5%;
+  height:50%;
+  padding-top:1%;
+  padding-left:1%;
+  padding-right:5%;
   float: none;
 }
-#mid_areax
+#all_tools
 {
     width:100%;
     height:90%;
    
 }
-#disc_areax
+#board_chat
 {
-    width:91.5%;
+    width:60%;
     height:100%;
     float:left;
-    background-color: cornflowerblue;
+    background-color: black;
+}
+#part_area
+{
+    width:40%;
+    height:100%;
+    background-color: lightblue;
+    float: left;
+}
+#stream_user
+{
+    height:45%;
+    width:100%;
+    
+}
+#otherpart
+{
+    width:100%;
+    height:55%;
+}
+#myboard
+{
+    height:40%;
+    width:100%;
+}
+#chat
+{
+    height:60%;
+    width:100%;
 }
 
 #onefooterx

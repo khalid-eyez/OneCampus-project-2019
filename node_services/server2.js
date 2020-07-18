@@ -1,10 +1,15 @@
-var express=require('express');
+/*var express=require('express');
 var onecampus_server2=express();
 var server = require('http').createServer(onecampus_server2);
 var servernetwork=server.listen(1000);
+console.log("onecampus server 2 is running at port 1000");*/
+var express=require('express');
+var onecampus_server2=express();
+var servernetwork=onecampus_server2.listen(1000);
+var socket=require('socket.io');
+var clientnode=socket(servernetwork);
 console.log("onecampus server 2 is running at port 1000");
-
-var clientnode=require('socket.io')(server);
+//var clientnode=require('socket.io')(server);
 //var clientnode=socket(servernetwork);
 
 clientnode.sockets.on('connection',connectionhandler);
@@ -84,5 +89,19 @@ if(socuser){
 */
    
  console.log(socket.username);
+
+
+ //handling video calls
+
+ socket.on('offer',function(offer){
+
+  console.log(offer);
+    clientnode.emit('offer',offer);
+ })
+ socket.on('answer',function(answer){
+
+
+    clientnode.emit('answer',answer);
+ })
 }
 

@@ -15,7 +15,7 @@ if(isset($_GET["searchkey"]))
     ///print($me);
     $conn=dbconnect();
 
-    $sql="select*from student_bio,student_academics where (student_bio.student_id=student_academics.student_id) && firstname like '%$key%' or lastname like '%$key%'";
+    $sql="select*from student_bio,student_academics where (student_bio.student_id=student_academics.student_id) && (firstname like '%$key%' or lastname like '%$key%')";
 
     $query=mysqli_query($conn,$sql) or die(mysqli_error($conn));
     print('<div id="searchpage">');
@@ -28,12 +28,12 @@ if(isset($_GET["searchkey"]))
         } //i can't search myself
             else{
                 //checking if there are pending requests
-            $stud_id=$result['student_id'];
+            $stud_id=$result['student_id'];!
             //print($stud_id);
          
             $test_pending_requests="select * from stud_partner where (requester_id='$me' && student_id='$stud_id') or (requester_id='$stud_id' && student_id='$me');";
             $treq=mysqli_query($conn,$test_pending_requests) or die(mysqli_error());
-            if(mysqli_num_rows($treq)==0) //no pending or partnership already exist
+            if(mysqli_num_rows($treq)==null) //no pending or partnership already exist
             {
         print('<div id="result">');
         print('<div id="pix"><img src="../media_store/user_store/images/img.jpg"/></div>');

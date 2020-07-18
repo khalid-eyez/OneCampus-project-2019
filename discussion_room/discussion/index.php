@@ -3,11 +3,14 @@
 <head>
 <title>discussion</title>
 <link rel="stylesheet" type="text/css" href="styles/index/index.css"/>
+<link rel="stylesheet" type="text/css" href="styles/chat/text_chat.css"> 
+<link rel="stylesheet" type="text/css" href="styles/audiovisual/video_room.css">
 <link rel="stylesheet" type="text/css" href="../discussion_room_1/styles/index.css"/>
-<script src="../../ressources/jquery/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script  src="../discussion_room_1/scripts/smartboard/tools.js"></script>
-<script src="scripts/index/index.js"></script>
 <script src="lib/socketio/socket.io.js"></script>
+<script src="scripts/index/index.js"></script>
+<script src="scripts/audiovisual/audiovisual.js"></script>
 </head>
 <body>
 <div id="topbarx">
@@ -21,28 +24,23 @@
 <div id="timingx"></div>
 </center>
 </div>
-<div id="mid_areax">
-<div id="optionsx">
-        <img src="../../media_store/onecampus_store/onecampus_icons/vidcam.png" title="video conference" id="video"/> 
-        <img src="../../media_store/onecampus_store/onecampus_icons/whiteboard.png" title="whiteboard" id="board"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/chat_room.png" title="text chat room" id="chat"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/sharescr2.png" title="share screen" id="screen"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/part.png" title="view participants" id="participants"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/sett.png" id="setimg" title="individual options"/>
-        <div id="setoptionsx">
-        <img src="../../media_store/onecampus_store/onecampus_icons/mike.png" title="switch microphone" id="mike"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/audio1.png" title="switch audio" id="audio"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/camswitch.png" title="switch video camera" id="camera"/>
-        </div>
-        <img src="../../media_store/onecampus_store/onecampus_icons/exit.png" title="exit discussion" id="exit"/>
-        <img src="../../media_store/onecampus_store/onecampus_icons/close.png" title="close discussion" id="close"/>
-        
-
+<div id="all_tools">
+<div id="part_area">
+<div id="stream_user">
+<?php include_once('audiovisual.php');?>
 </div>
-<div id="disc_areax">
+<div id="otherpart">
 </div>
 </div>
-<div id="participants"></div>
+<div id="board_chat">
+<div id="myboard">
+<?//php include_once('../discussion_room_1/index.php');?>
+</div>
+<div id="chat">
+<?php include_once('chat.php');?>
+</div>
+</div>
+</div>
 <center>
 <div id="onefooterx">onecampus team 2020</div>
 <center>
