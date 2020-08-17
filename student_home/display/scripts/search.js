@@ -4,23 +4,25 @@ $('document').ready(function(){
     
     for(var i=0;i<all.length;i++){
         
-    all.eq(i).click(function(){
+    all.eq(i).click(function(x){
+    if(x.target.tagName=='P'){
     var id=$(this).attr('id');
-    console.log(id);
+    
     var clicked=$(this);
-    //console.log(id);
+    console.log(x.target.tagName);
     
     $.get('partner_requests.php',{preq:id},function(data)
     {
     
     clicked.text(data);
-    console.log(data);
+    //console.log(data);
     //console.log(data);
     
     });
-    
+}
     
     });
+
     }
     
     });

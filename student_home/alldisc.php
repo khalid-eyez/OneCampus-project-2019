@@ -93,12 +93,13 @@ var all=$('#joindeci *');
 </script>
 </head>
 <body>
+<div id="disc_head">All discussions</div>
 <?php
 
 include("../lib/dbconnect.php");
 $conn=dbconnect();
 $me=$_SESSION['userid'];
-$sql="select * from stud_session,student_bio where (student_bio.student_id=stud_session.student_id or student_bio.student_id=stud_session.partner_id);";
+$sql="select * from stud_session,student_bio where (student_bio.student_id=stud_session.student_id or student_bio.student_id=stud_session.partner_id) && (stud_session.student_id=$me or stud_session.partner_id=$me) ORDER BY session_id DESC LIMIT 10;";
 $req=mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 print('<div id="discussionlist">');
@@ -107,28 +108,28 @@ while($alldiscs=mysqli_fetch_array($req))
     print('<div id="discplay">');
     if($alldiscs['status']=='accepted')
     {
-      if($alldiscs['student_id']!=$me || $alldiscs['partner_id']!=$me)
+      if($alldiscs['student_id']==$me && $alldiscs['partner_id']!=$me)
       {
-       print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'.jpg" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="joindeci"><p id="'.$alldiscs['firstname'].'_'.$alldiscs['student_id'].'">Join</p></div>');
+       print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="ddesc"><div id="dtitle">'.$alldiscs['title'].'</div><div id="ddate">'.$alldiscs['date'].'</div><div id="dstart">'.$alldiscs['start_time'].'</div><div id="dend">'.$alldiscs['end_time'].'</div></div><div id="joindeci"><p id="'.$alldiscs['firstname'].'_'.$alldiscs['student_id'].'">Start</p></div>');
     
       }
-      else
+      else if($alldiscs['partner_id']==$me && $alldiscs['student_id']!=$me)
           {
-
+            print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="ddesc"><div id="dtitle">'.$alldiscs['title'].'</div><div id="ddate">'.$alldiscs['date'].'</div><div id="dstart">'.$alldiscs['start_time'].'</div><div id="dend">'.$alldiscs['end_time'].'</div></div><div id="joindeci"><p id="'.$alldiscs['firstname'].'_'.$alldiscs['student_id'].'">Join</p></div>');
           }
     }
     else if($alldiscs['status']=='pending'){
 
          if($alldiscs['partner_id']==$me && $alldiscs['student_id']!=$me) 
          {
-            print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'.jpg" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="acc_deci"><p id="'.$alldiscs['student_id'].'">Accept</p></div><div id="deny"><p id="'.$alldiscs['student_id'].'">Deny</p></div></div>');
+            print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="ddesc"><div id="dtitle">'.$alldiscs['title'].'</div><div id="ddate">'.$alldiscs['date'].'</div><div id="dstart">'.$alldiscs['start_time'].'</div><div id="dend">'.$alldiscs['end_time'].'</div></div><div id="acc_deci"><p id="'.$alldiscs['student_id'].'">Accept</p></div><div id="deny"><p id="'.$alldiscs['student_id'].'">Deny</p></div></div>');
          }
          else if($alldiscs['student_id']==$me && $alldiscs['partner_id']!=$me){
-           print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'.jpg" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div id="acc_deci"><div id=""><p >pending</p></div></div></div>');
+           print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="ddesc"><div id="dtitle">'.$alldiscs['title'].'</div><div id="ddate">'.$alldiscs['date'].'</div><div id="dstart">'.$alldiscs['start_time'].'</div><div id="dend">'.$alldiscs['end_time'].'</div></div><div id="deci"><p>pending</p></div></div>');
          }
         }
     else{
-        print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'.jpg" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="deci"><p id="denied">Denied</p></div>');
+        print('<div id="theimage"><img src="../media_store/user_store/images/'.$alldiscs['profil'].'" /></div><div id="discpart">'.$alldiscs['firstname'].' '.$alldiscs['lastname'].'</div><div id="ddesc"><div id="dtitle">'.$alldiscs['title'].'</div><div id="ddate">'.$alldiscs['date'].'</div><div id="dstart">'.$alldiscs['start_time'].'</div><div id="dend">'.$alldiscs['end_time'].'</div></div><div id="deci"><p id="denied">Denied</p></div>');
     }
     
 

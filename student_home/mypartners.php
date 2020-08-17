@@ -2,6 +2,35 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="display/styles/recommender.css"/>
+<script type="text/javascript">
+$('document').ready(function(){
+
+var all=$('#prequest *');
+
+for(var i=0;i<all.length;i++){
+    
+all.eq(i).click(function(){
+var id=$(this).attr('id');
+var clicked=$(this);
+console.log(id);
+
+$.get('partner_remove.php',{delete:id},function(data)
+{
+
+clicked.text(data);
+console.log(data);
+
+});
+
+
+});
+}
+
+});
+
+
+
+</script>
 </head>
 <body>
 <?php
@@ -32,14 +61,15 @@ if($all['student_id']){
 for($i=0;$i<count($all['student_id']);$i++)
 {
   print('<div id="recommendedx">');
-  print('<div id="image"><img src="../media_store/user_store/images/'.$all['profil_img'][$i].'.jpg" /></div>');
+  print('<div id="image"><img src="../media_store/user_store/images/'.$all['profil_img'][$i].'" /></div>');
   print('<div id="desc">');
+  print('<center>');
   print('<div id="fullname">'.$all['student_firstname'][$i].' '.$all['student_lastname'][$i].'</div>');
   print('</div>');
   print('<div id="requestx">');
   print('<div id="prequest"><p id="'.$all['student_id'][$i].'">Remove</p></div>');
   print('</div>');
- 
+ print('</center>');
   print('</div>');
 }
 print('</div>');

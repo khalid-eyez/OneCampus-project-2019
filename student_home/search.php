@@ -28,7 +28,7 @@ if(isset($_GET["searchkey"]))
         } //i can't search myself
             else{
                 //checking if there are pending requests
-            $stud_id=$result['student_id'];!
+            $stud_id=$result['student_id'];
             //print($stud_id);
          
             $test_pending_requests="select * from stud_partner where (requester_id='$me' && student_id='$stud_id') or (requester_id='$stud_id' && student_id='$me');";
@@ -36,11 +36,11 @@ if(isset($_GET["searchkey"]))
             if(mysqli_num_rows($treq)==null) //no pending or partnership already exist
             {
         print('<div id="result">');
-        print('<div id="pix"><img src="../media_store/user_store/images/img.jpg"/></div>');
+        print('<div id="pix"><img src="../media_store/user_store/images/'.$result['profil'].'"/></div>');
         print('<div id="sideinfo">');
-        print('<div id="fullname">'.$result['firstname'].' '.$result['lastname'].'</div><div id="details"> BSC. Computer science the university of dodoma</div>');
-        print('<div id="request"><p id="'.$result['student_id'].'">partner request</p></div>');
-        print('</div>');
+        print('<div id="fullname">'.$result['firstname'].' '.$result['lastname'].'</div><div id="details">'.$result['P_title'].','.$result['university'].'</div></div>');
+        print('<div id="request"><div id="reimg"><img src="../media_store/onecampus_store/onecampus_icons/connect.jpg"/></div><p id="'.$result['student_id'].'">Partner request</p></div>');
+        //print('</div>');
         print('</div>');
             }
             else{
@@ -49,20 +49,20 @@ if(isset($_GET["searchkey"]))
                     {
 
                         print('<div id="result">');
-                        print('<div id="pix"><img src="../media_store/user_store/images/img.jpg"/></div>');
+                        print('<div id="pix"><img src="../media_store/user_store/images/'.$result['profil'].'"/></div>');
                         print('<div id="sideinfo">');
-                        print('<div id="fullname">'.$result['firstname'].' '.$result['lastname'].'</div><div id="details"> BSC. Computer science the university of dodoma</div>'); 
+                        print('<div id="fullname">'.$result['firstname'].' '.$result['lastname'].'</div><div id="details">'.$result['P_title'].','.$result['university'].'</div>'); 
                         print('</div>');            
         if($test['status']=='pending'){
-        print('<div id="norequest">pending request</div>');
+        print('<div id="norequest">Pending request</div>');
         }
         else if($test['status']=='accepted')
         {
-            print('<div id="norequest">already partners</div>');  
+            print('<div id="norequest">Already partners</div>');  
         }
         else
         {
-            print('<div id="request"><p id="'.$result['student_id'].'">partner request</p></div>');
+            print('<div id="request"><div id="reimg"><img src="../media_store/onecampus_store/onecampus_icons/connect.jpg"/></div><p id="'.$result['student_id'].'">Partner request</p></div>');
 
         }
         print('</div>');

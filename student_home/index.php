@@ -5,17 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneCampus</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="groups/display/styles/styles2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,500i,700,700i">
     <link rel="stylesheet" href="display/styles/index.css" />
-
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="groups/display/assets/css/styles.min.css">
+    <link rel="stylesheet" href="groups/display/assets/css/styles.css">
     <link rel="stylesheet" href="display/styles/discussion.css" />
     <link rel="stylesheet" href="display/styles/search.css" />
     <link rel="stylesheet" href="display/styles/notif.css" />
     <link rel="stylesheet" type="text/css" href="display/styles/groups.css"/>
+    <link rel="stylesheet" href="assets/css/styles.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="display/scripts/homepage.js"></script>
@@ -25,7 +34,17 @@
     <script type="text/javascript">
     $('document').ready(function()
     {
-
+        $('#usernamex').css({
+            'marginLeft':'36%',
+            'fontWeight':'bold',
+            'width':'20%',
+            'textAlign':'center'
+        });
+      $('#profile-col').css('paddingLeft','35%');
+      setInterval(function(){
+     $('#profile-col').load('getuserimg.php');
+     },2000);
+      $('#logo').css('marginLeft','35%');
       var all=$('#joindeci *');
 
       for(var i=0;i<all.length;i++){
@@ -78,10 +97,12 @@
                     <div class="col"><img src="assets/img/ONECAMPUS FULL ICON.png" id="logo"></div>
                 </div>
                 <div class="row" id="row-2-main-left-col">
-                    <div class="col" id="profile-col"><img class="rounded-circle" src="assets/img/profile.png" id="logo" style="width:80px;">
-                        <p id="username"><?php print($_SESSION['username']);?></p>
+                    <div class="col" id="profile-col">
+                       
                     </div>
+                    
                 </div>
+                <div id="usernamex"><?php print($_SESSION['username']);?></div>
                 <div class="row" id="row-3-main-left-col">
                     <div class="col-sm-4" id="icon-col"><i class="icon-home" id="side-bar-icon"></i></div>
                     <div class="col" id="icon-name-col">
@@ -89,13 +110,13 @@
                     </div>
                 </div>
                 <div class="row" id="row-4-main-left-col">
-                    <div class="col-sm-4" id="icon-col"><i class="icon-user-follow" id="side-bar-icon"></i></div>
+                    <div class="col-sm-4" id="icon-col"><i class="far fa-handshake" id="side-bar-icon"></i></div>
                     <div class="col" id="icon-name-col">
                         <p id="side-bar-icon-name">Partners</p>
                     </div>
                 </div>
                 <div class="row" id="row-9-main-left-col">
-                    <div class="col-sm-4" id="icon-col"><i class="icon-user-follow" id="side-bar-icon"></i></div>
+                    <div class="col-sm-4" id="icon-col"><i class="fas fa-users" id="side-bar-icon"></i></div>
                     <div class="col" id="icon-name-col">
                         <p id="side-bar-icon-name">Groups</p>
                     </div>
@@ -116,7 +137,7 @@
                                 <div class="form-group" id="search-form-group"><label for="search-field"></label><i class="fa fa-search"></i><input class="form-control search-field" type="search" name="search" placeholder="Search" id="search-field"></div>
                             </form>
                             <form class="form-inline ml-auto" target="_self">
-                                <div class="form-group" id="search-form-group"><label for="search-field"></label><i class="fa fa-bell-o" id="notefication-icon"></i><span id="hidden-text-on-navbar"></span><i class="fa fa-user-o" id="profile-icon"></i></div>
+                                <div class="form-group" id="search-form-group"><label for="search-field"></label><i class="fa fa-bell-o" id="notefication-icon"></i><span id="hidden-text-on-navbar"></span><i class="fas fa-sign-out-alt" id="profile-icon"></i></div>
                             </form>
                     </div>
             </div>
@@ -126,11 +147,13 @@
         </div>
         <div id="user_profil"></div>
         <div id="search"></div>
+        <div id="notifications"></div>
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.min.js"></script>
+    <script src="groups/display/assets/js/component.js"></script>
     <?php }else{header("location:../");} ?>
 </body>
 </html>

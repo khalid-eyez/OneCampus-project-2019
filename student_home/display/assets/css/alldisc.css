@@ -1,0 +1,142 @@
+#discussionlist
+{
+    width:100%;
+    height:250px;
+    overflow-x: auto;
+    margin-top: .5%;
+    
+
+}
+#discplay
+{
+   width:95%;
+   height:10%;
+   background-color: white;
+   border-radius: 10px 10px 10px 10px;
+   margin-top: .2%;
+   margin-left: 2.5%;
+   float: left;
+
+}
+#apartner div{
+    margin-right: .5%;
+}
+#theimage
+{
+   width:5%;
+   height:50%;
+   float: left;
+   margin-right: 2%;
+}
+#theimage img
+{
+    width:35px;
+    height:35px;
+    float: left;
+    border-radius:50%!important;
+    
+}
+#discpart
+{
+    float:left;
+    width:15%;
+    height:70%;
+    font-size: 13px;
+    overflow: hidden;
+    margin-top: 1%;
+    
+}
+#deci
+{
+    width:10%;
+    float:left;
+    font-size: 13px;
+    margin-left: 5%;
+}
+#acc_deci
+{
+    width:10%;
+    float:left;
+    font-size: 13px;
+    cursor: pointer;
+    color:rgb(72, 72, 235);
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 5%;
+}
+#acc_deci:hover
+{
+   font-size: 14px;
+}
+#joindeci
+{
+    width:7%;
+    float:left;
+    font-size: 13px;
+    margin-left:5%;
+    font-size: 13px;
+    cursor: pointer;
+    color:rgb(72, 72, 235);
+    font-weight: bold;
+    font-size: 12px;
+    
+}
+#joindeci:hover
+{
+   font-size: 14px;
+}
+#disc_head
+{
+    background-color: rgba(90, 90, 204, 0.8);
+    color:white;
+    width:96%;
+    margin-left:1.5%;
+    padding-left: 1%;
+    border-radius:12px 12px  0px 0px ;
+    margin-top:1%;
+}
+#ddate
+{
+    min-width:35%;
+    overflow: hidden;
+
+}
+#ddesc
+{
+    
+    float: left;
+    height:fit-content;
+    height:-moz-fit-content;
+    height:-webkit-fit-content;
+    width:80%;
+    margin-top: 1%;
+}
+#ddesc div
+{
+    float:left;
+    width:25%;
+    font-size: 10px;
+}
+#deny
+{
+    cursor: pointer;
+    color:rgb(83, 83, 233);
+    font-weight: bold;
+    font-size: 12px;
+}
+#deny:hover{
+
+    color:blue;
+    font-size: 14px;
+    
+
+}
+#discs
+{
+width:fit-content;
+width:-moz-fit-content;
+width: -webkit-fit-content;
+height:fit-content;
+height:-moz-fit-content;
+height: -webkit-fit-content;
+}

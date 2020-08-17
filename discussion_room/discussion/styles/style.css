@@ -1,0 +1,32 @@
+
+  
+  .videos { 
+  
+      height:100%;
+  }
+  
+  .videoContainer {
+     height:150px;
+      width:fit-content;
+      width:-moz-fit-content;
+      width:-webkit-fit-content;
+      float: left;
+      margin-left: 1%;
+      background-color: black;
+     
+      
+  }
+  
+  .videoContainer video {
+ 
+      height: 130px;
+      width:170px;
+  }
+  
+  .videoLabel {
+      color: white;
+      font: bold 13px Arial, Sans-Serif;
+      height:2%;
+      background: rgba(0, 0, 0, 0.55);
+      position: absolute;
+  }

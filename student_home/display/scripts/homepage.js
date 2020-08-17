@@ -4,7 +4,7 @@ $('document').ready(
     {
       $("#page-name").text('Home');
       $('#main').load('home.php');
-
+      $('#notifications').load('getallnotif.php');
       //handling notification number
       $('#hidden-text-on-navbar').css('display','block');
       $('#hidden-text-on-navbar').load('not_num.php');
@@ -46,7 +46,7 @@ $('document').ready(
 
          function(){
  
-            $('#main').load("sidemenu/groups.php");
+            $('#main').load('groups/display/grouplist.php');
             $("#page-name").text('Groups');
  
          });
@@ -97,12 +97,26 @@ $('document').ready(
               $('#search').css('display','none');
               }
            })
+           //$('body').mouseup(function(){
+            //if($(this)!=$('#notifications'))
+            //{
+               //console.log($(this));
+             //$('#notifications').css('display','none'); 
+           // }
+         //})
+         $('#notifications').mouseleave(function(){
+
+
+            $(this).css('display','none');
+         });
            $("#search").click(function(e) {
             e.stopPropagation(); 
             return false;       
                                  
         });
-         
+      
+            //removing the notification window
+    
 
 
 
@@ -123,10 +137,13 @@ window.location.replace('logout.php');
   //notification icon handling
    $('#notefication-icon').click(function(){
 
-   $('#main').load('getallnotif.php');
-
+  
+   $('#notifications').css('display','block');
 
    });
+ 
+
+   //the profil page
 
    $('#profile-col').click(function(){
 
@@ -145,6 +162,6 @@ window.location.replace('logout.php');
    
       });
 
-
+// 
 
     });

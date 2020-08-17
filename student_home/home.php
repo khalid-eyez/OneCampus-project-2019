@@ -13,31 +13,31 @@
      setInterval(function(){
      $('#recommended').load('recommender.php');
      },4000);
-
-   
-    setInterval(function(){
+     setInterval(function(){
      $('#online').load('online_partnes.php');
      },2000);
+
+
      setInterval(function(){
      $('#discussions').load('alldisc.php');
      },2000);
 
     })   
   
-    
+    $('#repop').load('disc_request_form.php #discreq');
     </script>
    
 </head>
 
 
 <body>
+<div id="repop"></div>
 <div id="home">
 <div id="leftside">
 <div id="recommended"></div>
 <div id="discussions"></div>
 </div>
 <div id="online">
-
 <div>
 <div>
 

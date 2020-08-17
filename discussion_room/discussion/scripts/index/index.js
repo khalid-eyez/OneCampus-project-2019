@@ -2,7 +2,7 @@ $('document').ready(function(){
 
 
 //handling the chat messages
-var serverchannel=io.connect('http://172.16.52.47:1000');
+var serverchannel=io.connect('http://172.20.10.8:1000');
 var params = new window.URLSearchParams(window.location.search);
 var room=params.get('disc');
 var username=params.get('username');
@@ -96,79 +96,181 @@ function getnewmessage(dataz)
 //handling the video conference
 //................................................
 
-var source="video";
-var stan={
+//const WS_PORT = 8001; //make sure this matches the port for the webscokets server
+
+var localUuid;
+var localDisplayName;
+var localStream;
+var serverConnection;
+var peerConnections = {}; // key is uuid, values are peer connection object and user defined display name string
+
+var peerConnectionConfig = {
   'iceServers': [
-    {
-      'urls': 'stun:stun.l.google.com:19302'
-    },
-    {
-      'urls': 'turn:192.158.29.39:3478?transport=udp',
-      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-      'username': '28224511:1379330808'
-    },
-    {
-      'urls': 'turn:192.158.29.39:3478?transport=tcp',
-      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-      'username': '28224511:1379330808'
-    }
+    { 'urls': 'stun:stun.stunprotocol.org:3478' },
+    { 'urls': 'stun:stun.l.google.com:19302' },
   ]
 };
-var constraints={
-    video:true,
-    audio:true
+
+function start() {
+  localUuid = createUUID();
+
+  // check if "&displayName=xxx" is appended to URL, otherwise alert user to populate
+  var urlParams = new URLSearchParams(window.location.search);
+  localDisplayName =username;
+  document.getElementById('localVideoContainer').appendChild(makeLabel(localDisplayName));
+
+  // specify no audio for user media
+  var constraints = {
+    video: {
+      width: {max: 720},
+      height: {max: 480},
+      frameRate: {max: 30},
+    },
+    audio: true,
+  };
+
+  // set up local video stream
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(stream => {
+        localStream = stream;
+        document.getElementById('localVideo').srcObject = stream;
+      }).catch(errorHandler)
+
+      // set up websocket and message all existing clients
+      .then(() => {
+        //serverConnection =io.connect('http://172.16.52.54:' + WS_PORT);
+        serverchannel.on('message',gotMessageFromServer);
+          serverchannel.send(JSON.stringify({ 'displayName': localDisplayName, 'uuid': localUuid, 'dest': 'all' }));
+      }).catch(errorHandler);
+
+  } else {
+    alert('Your browser does not support getUserMedia API');
+  }
 }
 
-const peerConnection=new RTCPeerConnection(stan);
+function gotMessageFromServer(message) {
+  var signal = JSON.parse(message);
+  var peerUuid = signal.uuid;
 
-var media=navigator.mediaDevices;
-if(navigator.mediaDevices.getUserMedia){
-navigator.mediaDevices.getUserMedia(constraints).then(function(stream){
-  var video=document.getElementById('gvideo');
-  console.log(video)
-    localStream=stream;
-    video.srcObject=stream;
-    peerConnection.addStream(stream);
-    peerConnection.createOffer()
-    .then(sdp=>peerConnection.setLocalDescription(sdp))
-    .then(function(){
-     serverchannel.emit('offer',peerConnection.localDescription);
+  // Ignore messages that are not for us or from ourselves
+  if (peerUuid == localUuid || (signal.dest != localUuid && signal.dest != 'all')) return;
 
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-});
+  if (signal.displayName && signal.dest == 'all') {
+    // set up peer connection object for a newcomer peer
+    setUpPeer(peerUuid, signal.displayName);
+    serverchannel.send(JSON.stringify({ 'displayName': localDisplayName, 'uuid': localUuid, 'dest': peerUuid }));
+
+  } else if (signal.displayName && signal.dest == localUuid) {
+    // initiate call if we are the newcomer peer
+    setUpPeer(peerUuid, signal.displayName, true);
+
+  } else if (signal.sdp) {
+    peerConnections[peerUuid].pc.setRemoteDescription(new RTCSessionDescription(signal.sdp)).then(function () {
+      // Only create answers in response to offers
+      if (signal.sdp.type == 'offer') {
+        peerConnections[peerUuid].pc.createAnswer().then(description => createdDescription(description, peerUuid)).catch(errorHandler);
+      }
+    }).catch(errorHandler);
+
+  } else if (signal.ice) {
+    peerConnections[peerUuid].pc.addIceCandidate(new RTCIceCandidate(signal.ice)).catch(errorHandler);
+  }
 }
-   peerConnection.onaddatream=function(e){
-    
-    video.srcObject=e.stream;
+
+function setUpPeer(peerUuid, displayName, initCall = false) {
+  peerConnections[peerUuid] = { 'displayName': displayName, 'pc': new RTCPeerConnection(peerConnectionConfig) };
+  peerConnections[peerUuid].pc.onicecandidate = event => gotIceCandidate(event, peerUuid);
+  peerConnections[peerUuid].pc.ontrack = event => gotRemoteStream(event, peerUuid);
+  peerConnections[peerUuid].pc.oniceconnectionstatechange = event => checkPeerDisconnect(event, peerUuid);
+  peerConnections[peerUuid].pc.addStream(localStream);
+
+  if (initCall) {
+    peerConnections[peerUuid].pc.createOffer().then(description => createdDescription(description, peerUuid)).catch(errorHandler);
+  }
 }
 
+function gotIceCandidate(event, peerUuid) {
+  if (event.candidate != null) {
+    serverchannel.send(JSON.stringify({ 'ice': event.candidate, 'uuid': localUuid, 'dest': peerUuid }));
+  }
+}
 
-//receiving offer
-//const peerConnection=new RTCPeerConnection(stan);
+function createdDescription(description, peerUuid) {
+  console.log(`got description, peer ${peerUuid}`);
+  peerConnections[peerUuid].pc.setLocalDescription(description).then(function () {
+    serverchannel.send(JSON.stringify({ 'sdp': peerConnections[peerUuid].pc.localDescription, 'uuid': localUuid, 'dest': peerUuid }));
+  }).catch(errorHandler);
+}
 
-serverchannel.on('offer',function(data){
+function gotRemoteStream(event, peerUuid) {
+  console.log(`got remote stream, peer ${peerUuid}`);
+  //assign stream to new HTML video element
+  var vidElement = document.createElement('video');
+  vidElement.setAttribute('autoplay', '');
+  //vidElement.setAttribute('muted', '');
+  vidElement.srcObject = event.streams[0];
 
-peerConnection.setRemoteDescription(data)
-.then(()=>peerConnection.createAnswer())
-.then(sdp=>peerConnection.setLocalDescription(sdp))
-.then(function(){
-    serverchannel.emit('answer',peerConnection.localDescription);
+  var vidContainer = document.createElement('div');
+  vidContainer.setAttribute('id', 'remoteVideo_' + peerUuid);
+  vidContainer.setAttribute('class', 'videoContainer');
+  vidContainer.appendChild(vidElement);
+  vidContainer.appendChild(makeLabel(peerConnections[peerUuid].displayName));
+
+  document.getElementById('videos').appendChild(vidContainer);
+
+  updateLayout();
+}
+
+function checkPeerDisconnect(event, peerUuid) {
+  var state = peerConnections[peerUuid].pc.iceConnectionState;
+  console.log(`connection with peer ${peerUuid} ${state}`);
+  if (state === "failed" || state === "closed" || state === "disconnected") {
+    delete peerConnections[peerUuid];
+    document.getElementById('videos').removeChild(document.getElementById('remoteVideo_' + peerUuid));
+    updateLayout();
+  }
+}
+
+function updateLayout() {
+  // update CSS grid based on number of diplayed videos
+  var rowHeight = '98vh';
+  var colWidth = '98vw';
+
+  var numVideos = Object.keys(peerConnections).length + 1; // add one to include local video
+
+  if (numVideos > 1 && numVideos <= 4) { // 2x2 grid
+    rowHeight = '48vh';
+    colWidth = '48vw';
+  } else if (numVideos > 4) { // 3x3 grid
+    rowHeight = '32vh';
+    colWidth = '32vw';
+  }
+
+  document.documentElement.style.setProperty(`--rowHeight`, rowHeight);
+  document.documentElement.style.setProperty(`--colWidth`, colWidth);
+}
+
+function makeLabel(label) {
+  var vidLabel = document.createElement('div');
+  vidLabel.appendChild(document.createTextNode(label));
+  vidLabel.setAttribute('class', 'videoLabel');
+  return vidLabel;
+}
+
+function errorHandler(error) {
+  console.log(error);
+}
+
+// Taken from http://stackoverflow.com/a/105074/515584
+// Strictly speaking, it's not a real UUID, but it gets the job done here
+function createUUID() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+start();
 });
-});
-
-
-
-//receiving answer
-
-serverchannel.on('answer',function(d){
-
-    peerConnection.setRemoteDescription(d);
-})
-
-
-
-
-})

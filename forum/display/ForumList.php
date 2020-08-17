@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 
- //$('document').ready(function()
-   // {
+ $('document').ready(function()
+    {
 
-     //$('#num-of-replies').click(function(d){
+     var all=$('#num-of-replies *');
+     for(var i=0; i<all.length;i++)
+     {
 
+     all.eq(i).parent().click(function(d){
+        d.preventDefault();
+        var id=$(this).children().attr('id');
+        console.log($(this));
 
-        //d.preventDefault();
+        $('#main').load('../forum/display/ForumChat.php?id='+id+'');
+    });
 
-        //$('#main').load('ForumChat.php')
-    // })
-
-
+     }
    
-// })
+ })
     </script>
+    </head>
 <body>
 <?php
 //including the database connection file
@@ -35,7 +40,7 @@ $conn = $connection->connect();
  
 //fetching data in descending order (lastest entry first)
 //$query_topic = "SELECT * FROM thread ORDER BY create_date ASC";
-$query_topic = "SELECT thread.*, student_account.* FROM thread, student_account where thread.student_id = student_account.student_id ORDER BY create_date ASC";
+$query_topic = "SELECT * FROM thread, student_account,student_bio where thread.student_id = student_account.student_id && student_account.student_id=student_bio.student_id ORDER BY create_date ASC";
 $result_topic = mysqli_query($conn, $query_topic);
 //echo '<pre>'; print_r($result); exit;
 
@@ -62,7 +67,6 @@ $result_topic = mysqli_query($conn, $query_topic);
                             {    
                                 while($row_topic = mysqli_fetch_assoc($result_topic))
                                 {   
-
                                 $th_id = $row_topic['th_id'];
                                    $result = "SELECT student_account.*, replies.* 
                                    FROM student_account, replies 
@@ -72,16 +76,17 @@ $result_topic = mysqli_query($conn, $query_topic);
                                    $number_replies = mysqli_num_rows($result_replies);  
                                     ?>
                                     <div id="thread">
+                                    
                                         <div class="row" id="thread-row">
-                                            <div class="col" id="pfofile-img-col"><img class="rounded-circle" id="profile-img-thread" src="../forum/assets/img/myimage.jpg"></div>
+                                            <div class="col" id="pfofile-img-col"><img class="rounded-circle" id="profile-img-thread" src="../../media_store/user_store/images/<?php print($row_topic['profil']);?>" /></div>
                                             <div class="col" id="title-thread-col">
                                                 <h6 id="forum-title-heading" style="display: block;  width: 90%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><?php echo $row_topic['th_title']?></h6>
                                                 <p id="subtitle-thread-list" style="padding-Bottom: 1px"><?php echo 'Created by '. $row_topic['username'].' '. date('F j', strtotime($row_topic['create_date'])) ?></p>
                                             </div>
-                                            <div class="col align-self-center" id="replies-buttton" onclick="location.href='../forum/Display/ForumChat.php?id=<?php echo $row_topic['th_id']; ?>';" style="cursor: pointer;">
+                                            <div class="col align-self-center" id="replies-buttton" style="cursor: pointer;">
                                                 <div id="num-of-replies">
-                                                    <h6 id="reply-word">Replies</h6>
-                                                    <h6 id="reply-num"><?php echo $number_replies; ?></h6>
+                                                    <h6 id="<?php echo $row_topic['th_id'];?>">Replies</h6>
+                                                    <h6><?php echo $number_replies; ?></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,7 +99,7 @@ $result_topic = mysqli_query($conn, $query_topic);
         
             <!-- NEW TOPIC BUTTON -->
                
-            <div id="NewTopic-Div"><a class="btn btn-primary btn-lg" role="button" id="NewTopic-Button" data-toggle="modal" href="#NewTopic-Modal">New Topic</a>
+            <div id="NewTopic-Div"><a class="btn btn-primary btn-lg" style="color:blue" role="button" id="NewTopic-Button" data-toggle="modal" href="#NewTopic-Modal">New Topic</a>
                 <div class="modal fade" role="dialog" tabindex="-1" id="NewTopic-Modal">
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                         <div class="modal-content">
@@ -112,7 +117,7 @@ $result_topic = mysqli_query($conn, $query_topic);
                                 </form>
                             <div  class="modal-footer">
                                     <button class="btn btn-light" id="Cancel-Modal" data-dismiss="modal" type="button">Cancel</button>
-                                    <input type="button" class="btn btn-primary" id="SubmitButton-Modal" value="Submit" onClick="document.getElementById('NewThread_Form').submit();"/>
+                                    <input type="button" style="color:blue" class="btn btn-primary" id="SubmitButton-Modal" value="Submit" onClick="document.getElementById('NewThread_Form').submit();"/>
                             </div>   
                     </div>
                 </div>

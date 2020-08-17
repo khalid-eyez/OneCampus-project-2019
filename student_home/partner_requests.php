@@ -12,10 +12,10 @@ if(isset($_GET['preq']))
   $time=$_SERVER['REQUEST_TIME'];
 
   $conn=dbconnect();
-  $testex="select * from stud_partner where requester_id='$requester' && student_id='$req';";
-  $testreq=mysqli_query($conn,$testex) or die(mysqli_error());
-  if(mysqli_num_rows($testreq)>0){print('already sent');}
-  else{
+  //$testex="select * from stud_partner where requester_id='$requester' && student_id='$req';";
+  //$testreq=mysqli_query($conn,$testex) or die(mysqli_error());
+  //if(mysqli_num_rows($testreq)>0){print('already sent');}
+  //else{
   $tr="START TRANSACTION;";
   $rqsql="insert into stud_partner values('','$requester','$req','pending','$time','');";
   $rqsql2="insert into notification values('','$requester','$req','pr','$time','unseen');";
@@ -28,7 +28,7 @@ if(isset($_GET['preq']))
   else{$query5=mysqli_query($conn,"ROLLBACK;")or die(mysqli_error($conn));if($query5){print("request not sent");}}
 
   closedb($conn);
-}
+//}
 }
 //handling the responses
 if(isset($_GET['pres']))

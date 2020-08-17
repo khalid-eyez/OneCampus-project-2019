@@ -34,8 +34,8 @@ Male<input type="radio" name="gender" id="male" value="male"/>
 <fieldset><legend>Account information</legend>
 <input type="text" id="username" name="username" placeholder="username"></input>
 <input type="text" id="email" name="email" placeholder="email"></input>   
-<input type="text" id="password" name="password" placeholder="password"></input>
-<input type="text" id="confirm_pass" name="confirm_pass" placeholder="confirm password"></input></fieldset>
+<input type="password" id="password" name="password" placeholder="password"></input>
+<input type="password" id="confirm_pass" name="confirm_pass" placeholder="confirm password"></input></fieldset>
 
 <fieldset><legend>Academic information</legend>
 <input type="text" id="univ" name="univ" placeholder="univerdity"></input>

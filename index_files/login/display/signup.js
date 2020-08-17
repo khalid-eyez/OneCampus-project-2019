@@ -30,7 +30,7 @@ $('#regform').on('submit',function(f)
 //checking the emptyness
 //$('#form_submit_btn').click(function(){
   
-  $('input[type="text"]').each(function() {
+  $('input[type="text"],input[type="password"]').each(function() {
        
       if(!$(this).val()){
       f.preventDefault();

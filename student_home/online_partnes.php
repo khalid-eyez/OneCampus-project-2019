@@ -3,10 +3,13 @@
 <head>
 <title>online partners</title>
 <link rel="stylesheet" type="text/css" href="display/styles/online.css" />
+<link rel="stylesheet" href="display/styles/reqform.css" />
 <script src="display/scripts/jquery.js"></script>
 <script src="display/online_partners.js"></script>
+
 </head>
 <body>
+<div id="online_head">Online</div>
 <?php
 
 session_start();
@@ -26,7 +29,7 @@ while($allpartners=mysqli_fetch_array($req))
     
     if($allpartners['acc_status']=='active'){
     print('<div id="apartner">');
-    print('<div id="img"><img src="../media_store/user_store/images/'.$allpartners['profil'].'.jpg" /></div>');
+    print('<div id="img"><img src="../media_store/user_store/images/'.$allpartners['profil'].'" /></div>');
     print('<div id="fullnamexx">'.$allpartners['firstname'].'</div>');
     print('<div id="drequest"><p id="'.$allpartners['student_id'].'">Disc request</p></div>');
     print('</div>');

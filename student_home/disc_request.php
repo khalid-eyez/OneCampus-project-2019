@@ -8,11 +8,16 @@ session_start();
 if(isset($_GET['sid']))
 {
   $req=$_GET['sid'];
+  $title=$_GET['dtitle'];
+  $sdate=$_GET['stdate'];
+  $start=$_GET['start'];
+  $end=$_GET['end'];
   $requester=$_SESSION['userid'];
-  $time=$_SERVER['REQUEST_TIME'];
+  //$time=$_SERVER['REQUEST_TIME'];
 
   $conn=dbconnect();
-  $rqsql2="insert into stud_session values('','$requester','$req','$time','$time','pending');";
+  //$sql_try="select * from stud_session where end_time<=$end and end_time"
+  $rqsql2="insert into stud_session values('','$requester','$req','$start','$end','pending','$title','$sdate');";
 
   $query3=mysqli_query($conn,$rqsql2) or die(mysqli_error($conn));
 

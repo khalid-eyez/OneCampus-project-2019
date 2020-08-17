@@ -15,26 +15,52 @@ $('document').ready(function(){
     $('#info').load('../lib/update_info.php');
     
     });
+    $('#go').click(function(){
     
+      $('#user_profil').css('display','none');
+
+    })
+    $('#thisimage').click(function(){
+        if($('#myimage').val()=="")
+        {
+        $('#myimage').click();
+        }
+        else
+        {
+        $('#uploader').click();
+      
+        }
+        
+    })
+    $('#uploader').click(function(e){
+        //e.preventDefault();
+        var formData = new FormData(this);    
+    alert(formdata);
+    $('#uploadform').on('submit',function(z){
+    //z.preventDefault();
+
+    $.post("../user_profil/imageuploader.php", formData, function(data) {
+    alert(data);
+     });
+
+    })
+
+
+
+   
+    })
+     
+
+
     })
 </script>
 </head>
 <body id="thebody">
 <div id="registration">
     <div id="infoim">
-<div id="images"><img src="../user_profil/thewinner.jpg" /></div>
-<div id="info">
-<p>first name:IDA R</p>
-<p>last name: MSAKY</p>
-<p>Marital status:single</p>
-<p>gender: female</p>
-<p>email: idaframsaky@gmail.com</p>
-<p>contact: 06249019013</p>
-<p>program: Bachelor of science in computer science</p>
-<p>department:CSE</p>
-<p>college:CIVE</p>
-<p>university: the university</p>
-<div id="controls"><div id="edit">Edit</div><div id="go">close</div></div>
+<div id="images"><img src="../user_profil/thewinner.jpg" id="thisimage"/><div id="choose"></div></div>
+<form action="../user_profil/imageuploader.php" method="POST" enctype="multipart/form-data" id="uploadform"><input type="file" name="uploaded_file" id="myimage"></input><input type="submit" value="uploadfile" id="uploader" name="uploader"></input><form>
+<div id="go">close</div></div>
 </div>
 </div>
 

@@ -1,5 +1,5 @@
 $('document').ready(function(){
-var serverchannel=io.connect('http://172.16.52.47:1000');
+var serverchannel=io.connect('http://172.16.52.54:1000');
 var params = new window.URLSearchParams(window.location.search);
 var room=params.get('disc');
 var username=params.get('username');

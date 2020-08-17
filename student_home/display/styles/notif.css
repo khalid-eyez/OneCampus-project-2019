@@ -2,31 +2,31 @@
 {
     width: 100%;
     height:400px;
-    background-color: rgba(255,255,255,.6);
+    background-color: rgba(255,255,255,.7);
+    border: solid .5px #ccc;
+    border-radius: 7px 7px;
     overflow: auto;
 }
 
 #notifres
 {
-    width:90%;
+    width:100%;
     height:13%;
-    margin-left: 5%;
-    margin-top: 1%;
+    margin-top: .3%;
     background-color: rgba(255,255,255,.7);
     border-radius: 7px 7px;
-    box-shadow: 0px 0px 3px 3px #b5caf7;
+    box-shadow: 0px 0px .5px .5px #b5caf7;
     padding:.5%;
-    border: solid .5px white;
 }
 #userimg
 {
-    width: 5%;
+    width: 10%;
     height: 90%;
     float: left;
 }
 #info
 {
-    width:80%;
+    width:70%;
     height: 80%;
     padding-left: 20%;
     float: left;
@@ -44,6 +44,7 @@
 }
 #userimg img
 {
-    width:100%;
-    height:100%;
+    width:60%;
+    height:80%;
+    border-radius: 50%;
 }

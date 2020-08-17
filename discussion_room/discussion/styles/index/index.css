@@ -54,7 +54,7 @@ color:white;
 #optionsx
 {
     width:100%;
-    height:19%;
+    height:15%;
     border:solid 1px #ccc;
     color:blue;
     background-color:#fff;
@@ -82,7 +82,6 @@ color:white;
     width:60%;
     height:100%;
     float:left;
-    background-color: black;
 }
 #part_area
 {

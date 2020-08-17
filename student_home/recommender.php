@@ -34,6 +34,7 @@ clicked.text(data);
 </script>
 </head>
 <body>
+<div id="rec_head">Recommended partners</div>
 <?php
 
 session_start();
@@ -147,23 +148,24 @@ print('<div id="all_rec">');
 for($i=0;$i<count($my_recommended);$i++)
 {
   print('<div id="recommendedx">');
-  print('<div id="image"><img src="../media_store/user_store/images/'.$my_recommended_profil[$i].'.jpg" /></div>');
+  print('<div id="image"><img src="../media_store/user_store/images/'.$my_recommended_profil[$i].'" /></div>');
   print('<div id="desc">');
   print('<center>');
   print('<div id="fullname">'.$my_recommended_firstnames[$i].' '.$my_recommended_lastnames[$i].'</div>');
   //print('<div id="degree">'.$my_recommended_degree[$i].'</div>');
-  print('<div id="univ">'.$my_recommended_univ[$i].'</div>');
+  print('<div id="univ">'.$my_recommended_degree[$i].'</br>'.$my_recommended_univ[$i].'</div>');
   print('</center>');
   print('</div>');
   print('<div id="requestx">');
+  print('<img src="../media_store/onecampus_store/onecampus_icons/connect.jpg" />');
   print('<div id="prequest"><p id="'.$my_recommended[$i].'">partner request</p></div>');
   print('</div>');
- 
   print('</div>');
 }
 print('</div>');
 
-}else{print("you have no recommended partners");}
+}else{print('<div id="nopart"><img src="../media_store/onecampus_store/onecampus_icons/part.png"/>you have no recommended partners</div>');}
 ?>
+
 </body>
 </html>

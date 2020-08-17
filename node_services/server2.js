@@ -15,6 +15,7 @@ console.log("onecampus server 2 is running at port 1000");
 clientnode.sockets.on('connection',connectionhandler);
 var socuser;
 var conusers=new Array();
+var room;
 function connectionhandler(socket)
 {
     
@@ -38,7 +39,7 @@ if(socuser){
 
    function initsocket(data)
    {
-       socket.username=username;
+      // socket.username=username;
       
    }
   
@@ -46,6 +47,7 @@ if(socuser){
    function createroom(data)
    {
        socket.join(data.room);
+       room=data.room;
        console.log('new user in room in'+data.room);
    }
 
@@ -93,15 +95,31 @@ if(socuser){
 
  //handling video calls
 
- socket.on('offer',function(offer){
+ /*socket.on('offer',function(offer){
 
-  console.log(offer);
-    clientnode.emit('offer',offer);
+  
+    socket.broadcast.emit('offer',offer);
  })
  socket.on('answer',function(answer){
 
+    console.log(answer);
+    socket.broadcast.emit('answer',answer);
+ })*/
 
-    clientnode.emit('answer',answer);
- })
+ //video conference services
+
+ socket.on('message', function (message) {
+   // Broadcast any received message to all clients
+   console.log('received: %s', message);
+   socket.to(room).broadcast.emit('message',message);
+   //console.log(message);
+ });
+
+ socket.on('error', () => socket.terminate());
+
+
+
+
+
 }
 

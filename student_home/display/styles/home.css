@@ -37,6 +37,13 @@ body
     max-width: 100%;
     max-height:250px;
     margin-top: .5%;
-    overflow: auto;
    
+}
+#repop
+{
+    width:40%;
+    height:fit-content;
+    height:moz-fit-content;
+    height:webkit-fit-content;
+    margin-left: 40%;
 }
