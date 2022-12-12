@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/OneCampus-2019/OneCampus-project-2019#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jquery": "^3.4.1",
     "socket.io": "^2.3.0"
   }
